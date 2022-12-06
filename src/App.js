@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Create from "./components/create/Create";
+import Delete from "./components/delete/Delete";
+import CollapsibleExample from "./components/navbar/Navbar";
+import Read from "./components/read/Read";
+import Update from "./components/update/Update";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<CollapsibleExample />} />
+        <Route exact path="/create" element={<Create />} />
+        <Route exact path="/read" element={<Read />} />
+        <Route exact path="/update/:pathId" element={<Update />} />
+        <Route exact path="/delete/:pathId" element={<Delete />} />
+      </Routes>
+    </Router>
   );
 }
 
